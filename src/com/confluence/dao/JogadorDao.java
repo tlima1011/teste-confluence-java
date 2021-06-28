@@ -8,82 +8,82 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.confluence.model.domain.Jogador;
+import com.confluence.model.domain.Selecao;
 
 public class JogadorDao {
 
 	private Connection connection;
 
-	public JogadorDao() {
+	public void SelecaoDao() {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 
-	public void adiciona(Jogador jogador) {
-		String sql = "insert into jogador (nome, idclube,idade) values (?,?,?)";
+	public void adiciona(Selecao selecao) {
+		String sql = "insert into selecao (nome, continente, ranking) values (?,?,?)";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-			stmt.setString(1, jogador.getNome());
-			stmt.setInt(2, jogador.getClube());
-			stmt.setInt(3, jogador.getIdade());
+			stmt.setString(1, selecao.getNome());
+			stmt.setString(2, selecao.getContinente());
+			stmt.setInt(3, selecao.getRanking());
 			stmt.executeUpdate();
 		} catch (SQLException ex) {
 			throw new RuntimeException(ex);
 		} // fim try }//fim adiciona
 	}
 
-	public List<Jogador> getLista() {
-		String sql = "select * from jogador";
-		List<Jogador> jogadores = new ArrayList();
+	public List<Selecao> getLista() {
+		String sql = "select * from selecao";
+		List<Selecao> selecoes = new ArrayList();
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Jogador jogador = new Jogador();
-				jogador.setIdJogador(rs.getInt("idJogador"));
-				jogador.setNome(rs.getString("nome"));
-				jogador.setClube(rs.getInt("idclube"));
-				jogador.setIdade(rs.getInt("idade"));
-				jogadores.add(jogador);
+				Selecao selecao = new Selecao();
+				selecao.setIdSelecao(rs.getInt("idselecao"));
+				selecao.setNome(rs.getString("nome"));
+				selecao.setContinente(rs.getString("continente"));
+				selecao.setRanking(rs.getInt("ranking"));
+				selecoes.add(selecao);
 			} // fim while
 		} catch (SQLException ex) {
 			throw new RuntimeException(ex);
 		} // fim try
-		return jogadores;
+		return selecoes;
 	}// fim lista
 
-	public Jogador busca(Integer idjogador) {
-		String sql = "select * from jogador where idjogador = ?";
-		Jogador jogador = null;
+	public Selecao busca(Integer idselecao) {
+		String sql = "select * from selecao where idselecao = ?";
+		Selecao selecao = null;
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-			stmt.setLong(1, idjogador);
+			stmt.setLong(1, idselecao);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				jogador = new Jogador();
-				jogador.setIdJogador(rs.getInt("idjogador"));
-				jogador.setNome(rs.getString("nome"));
-				jogador.setClube(rs.getInt("idclube"));
-				jogador.setIdade(rs.getInt("idade"));
+				selecao = new Selecao();
+				selecao.setIdSelecao(rs.getInt("idselecao"));
+				selecao.setNome(rs.getString("nome"));
+				selecao.setContinente(rs.getString("continente"));
+				selecao.setRanking(rs.getInt("ranking"));
 			} // fim if
 		} catch (SQLException ex) {
 			throw new RuntimeException(ex);
 		} // fim try
-		return jogador;
+		return selecao;
 	}// fim busca
 
-	public void altera(Jogador jogador) {
-		String sql = "update jogador set nome = ?, clube = ?," + " idade = ? where idjogador = ?";
+	public void altera(Selecao selecao) {
+		String sql = "update selecao set nome = ?, continente = ? ranking = ? where idselecao = ?";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-			stmt.setString(1, jogador.getNome());
-			stmt.setInt(2, jogador.getClube());
-			stmt.setInt(3, jogador.getIdade());
-			stmt.setInt(4, jogador.getIdJogador());
+			stmt.setString(1, selecao.getNome());
+			stmt.setString(2, selecao.getContinente());
+			stmt.setInt(3, selecao.getRanking());
 			stmt.executeUpdate();
 		} catch (SQLException ex) {
 			throw new RuntimeException(ex);
 		} // fim try }//fim altera
 	}
 
-	public void remove(Jogador jogador) { 
-		String sql = "delete from jogador where idjogador = ?"; 
+	public void remove(Selecao selecao) { 
+		String sql = "delete from selecao where idselecao = ?"; 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) { 
-			stmt.setLong(1, jogador.getIdJogador()); 
+			stmt.setLong(1, selecao.getIdSelecao()); 
 			stmt.executeUpdate(); 
 		} catch (SQLException ex) { 
 			throw new RuntimeException(ex); 
