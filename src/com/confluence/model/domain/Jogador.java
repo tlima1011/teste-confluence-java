@@ -5,14 +5,13 @@ public class Jogador {
 	private Integer idJogador; 
 	private String nome; 
 	private Integer idade; 
-	private int clube; 
+	private Integer clube; 
 	
 	public Jogador() { 
 		
 	}
 
-	public Jogador(Integer idJogador, String nome, Integer idade, Integer clube) {
-		this.idJogador = idJogador;
+	public Jogador(String nome, Integer idade, Integer clube) {
 		this.nome = nome;
 		this.idade = idade;
 		this.clube = clube; 
@@ -46,7 +45,7 @@ public class Jogador {
 		return clube;
 	}
 
-	public void setClube(int idclube) {
+	public void setClube(Integer idclube) {
 		this.clube = idclube;
 	}
 

@@ -14,14 +14,14 @@ public class JogadorDao {
 
 	private Connection connection;
 
-	public void JogadorDao() {
+	public JogadorDao() {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 
 	public void adiciona(Jogador jogador) {
 		String sql = "insert into selecao (idclube, nome, idade) values (?,?,?)";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-			stmt.setInt(1, jogador.getClube());
+			stmt.setInt(1, jogador.getClube().intValue());
 			stmt.setString(2, jogador.getNome());
 			stmt.setInt(3, jogador.getIdade());
 			stmt.executeUpdate();

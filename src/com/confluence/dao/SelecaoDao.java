@@ -13,7 +13,7 @@ public class SelecaoDao {
 	
 	private Connection connection;
 
-	public void SelecaoDao() {
+	public SelecaoDao() {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 
@@ -36,7 +36,7 @@ public class SelecaoDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Selecao selecao = new Selecao();
-				selecao.setIdSelecao(rs.getInt("idselecao"));
+				selecao.setIdSelecao(rs.getInt("id"));
 				selecao.setNome(rs.getString("nome"));
 				selecao.setContinente(rs.getString("continente"));
 				selecao.setRanking(rs.getInt("ranking"));

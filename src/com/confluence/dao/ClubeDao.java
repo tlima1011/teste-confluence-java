@@ -36,7 +36,7 @@ public class ClubeDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Clube clube = new Clube();
-				clube.setIdClube(rs.getInt("idclube"));
+				clube.setIdClube(rs.getInt("idClube"));
 				clube.setNome(rs.getString("nome"));
 				clube.setEstadio(rs.getString("estadio"));
 				clubes.add(clube);

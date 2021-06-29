@@ -8,7 +8,8 @@ public class Convocacao {
 	
 	private Integer idConvocacao; 
 	private Date data; 
-	private Jogador jogador; 
+	private Integer jogador; 
+	private Integer selecao; 
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
@@ -16,10 +17,10 @@ public class Convocacao {
 		
 	}
 
-	public Convocacao(Integer idConvocacao, Date data, Jogador jogador) {
-		this.idConvocacao = idConvocacao;
+	public Convocacao(Date data, Integer jogador, Integer selecao) {
 		this.data = data;
 		this.jogador = jogador;
+		this.selecao = selecao; 
 	}
 
 	public Integer getIdConvocacao() {
@@ -38,19 +39,28 @@ public class Convocacao {
 		this.data = data;
 	}
 
-	public Jogador getJogador() {
+	public Integer getJogador() {
 		return jogador;
 	}
 
-	public void setJogador(Jogador jogador) {
+	public void setJogador(Integer jogador) {
 		this.jogador = jogador;
 	}
-	
+
+	public Integer getSelecao() {
+		return selecao;
+	}
+
+	public void setIdSelecao(Integer idselecao) {
+		this.selecao = idselecao;
+		
+	}
+
 	@Override
 	public String toString() {
 		return "Convocacao [idConvocacao=" + idConvocacao + ", data=" + sdf.format(data) + ", jogador=" + jogador + "]";
 	}
+
 	
 	
-		
 }

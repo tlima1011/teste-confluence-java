@@ -15,8 +15,7 @@ public class Selecao {
 		
 	}
 
-	public Selecao(Integer idSelecao, String nome, String continente, Integer ranking) {
-		this.idSelecao = idSelecao;
+	public Selecao(String nome, String continente, Integer ranking) {
 		this.nome = nome;
 		this.continente = continente;
 		this.ranking = ranking;

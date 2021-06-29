@@ -14,8 +14,7 @@ public class Clube {
 	
 	}
 	
-	public Clube(Integer idClube, String nome, String estadio) {
-		this.idClube = idClube;
+	public Clube(String nome, String estadio) {
 		this.nome = nome;
 		this.estadio = estadio;
 	}
